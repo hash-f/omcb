@@ -1,4 +1,4 @@
 api/tmp/
 bot/tmp/
-frontend/.cache
-frontend/dist
+frontend/.cache/
+frontend/dist/
