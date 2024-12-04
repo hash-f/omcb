@@ -6,7 +6,9 @@ Because this project not going to get as much traffic as the original one (or an
 
 ## API
 
-The API is written in go. To run the API you can
+The API is written in go. It uses [https://github.com/coder/websocket](https://github.com/coder/websocket) for websockets. The event server is based on the chat server example from coder/websocket.
+
+To run the API you can
 
 ```bash
 cd api/

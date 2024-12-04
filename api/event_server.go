@@ -51,13 +51,14 @@ type eventServer struct {
 	originPatterns string
 }
 
-// newEventServer constructs a chatServer with the defaults.
+// newEventServer constructs a eventServer with the defaults.
 func newEventServer() *eventServer {
 	es := &eventServer{
 		eventBufferLen: 16,
 		logf:           log.Printf,
 		clients:        make(map[*client]struct{}),
 		cacheClient:    newRedisClient(),
+		// @todo: Limit allowed origins to specified origins possibly from an env file
 		originPatterns: "*",
 	}
 	es.serveMux.HandleFunc("/subscribe", es.subscribeHandler)
@@ -97,7 +98,6 @@ func (es *eventServer) subscribeHandler(w http.ResponseWriter, r *http.Request) 
 // getStateHandler handles the requests to the GET /state route
 // It returns the state of all the checkboxes stored in the cache
 func (es *eventServer) getStateHandler(w http.ResponseWriter, r *http.Request) {
-	// @todo: Limit allowed origins to specified origins
 	w.Header().Set("Access-Control-Allow-Origin", es.originPatterns)
 	if r.Method != "GET" {
 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
@@ -114,7 +114,6 @@ func (es *eventServer) getStateHandler(w http.ResponseWriter, r *http.Request) {
 // getStateHandler handles the requests to the GET /state route
 // It returns the state of all the checkboxes stored in the cache
 func (es *eventServer) getStatsHandler(w http.ResponseWriter, r *http.Request) {
-	// @todo: Limit allowed origins to specified origins
 	w.Header().Set("Access-Control-Allow-Origin", es.originPatterns)
 	if r.Method != "GET" {
 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
