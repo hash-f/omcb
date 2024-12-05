@@ -2,6 +2,9 @@ import React from "react";
 
 export const Cell = ({ columnIndex, rowIndex, style, data }) => {
   const id = rowIndex * data.columnCount + columnIndex;
+  if (id > 999_999) {
+    return <></>;
+  }
   const styles = {
     cell: {
       ...style,

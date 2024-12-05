@@ -11,7 +11,7 @@ export const Grid = ({ checkHandler, bits }) => {
   const cellWidth = 30;
 
   const { width, height } = useWindowSize();
-  const gridHeight = height - 100;
+  const gridHeight = height - 150;
   const gridWidth = width - 50;
 
   const columnCount = Math.floor(gridWidth / 30);
@@ -20,7 +20,7 @@ export const Grid = ({ checkHandler, bits }) => {
   return (
     <ReactWindowGrid
       columnCount={columnCount}
-      rowCount={totalCount / columnCount}
+      rowCount={Math.ceil(totalCount / columnCount)}
       columnWidth={cellWidth}
       rowHeight={cellHeight}
       height={gridHeight}

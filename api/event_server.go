@@ -22,7 +22,7 @@ const (
 	channelName = "send-click-events"
 )
 
-// eventServer accepts events from clients and forwards batched events to subscribers..
+// eventServer accepts events from clients and forwards batched events to subscribers.
 type eventServer struct {
 	// eventBufferLen controls the max number
 	// of messages that can be queued for a subscriber
