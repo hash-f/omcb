@@ -49,6 +49,7 @@ export const App = () => {
   // Checkbox event handler
   let checkboxToggleHandler = (e) => {
     if (readyState !== ReadyState.OPEN) {
+      // @todo: Save event for retrying.
       console.log("Websocket connection is not open yet");
       return;
     }

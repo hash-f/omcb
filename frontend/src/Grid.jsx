@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FixedSizeGrid as ReactWindowGrid } from "react-window";
+import { FixedSizeGrid } from "react-window";
 
 import { useWindowSize } from "./hooks/useWindowSize";
 import { Cell } from "./Cell";
@@ -18,7 +18,7 @@ export const Grid = ({ checkHandler, bits }) => {
   const cellConfig = { columnCount, checkHandler, bits };
 
   return (
-    <ReactWindowGrid
+    <FixedSizeGrid
       columnCount={columnCount}
       rowCount={Math.ceil(totalCount / columnCount)}
       columnWidth={cellWidth}
@@ -28,6 +28,6 @@ export const Grid = ({ checkHandler, bits }) => {
       itemData={cellConfig}
     >
       {Cell}
-    </ReactWindowGrid>
+    </FixedSizeGrid>
   );
 };
